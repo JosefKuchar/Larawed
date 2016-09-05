@@ -1,19 +1,25 @@
 #!/bin/bash
+echo "[INFO] Patching %1"
+
+#copy temporary env patcher into project folder
 cp envPatcher.py $1
 
+#cd into project folder
 cd $1
-echo $0
+
 echo "[INFO] Installing paragonie/random_compat to solve CSPRNG error"
 composer require paragonie/random_compat:"~1.4"
 echo "[ OK ] Done"
 echo "[INFO] Creating .htaccess in root"
 echo "[INFO] Patching existing .htaccess in public/"
+#Create .htaccess file in root of the project
 cat <<EOT > .htaccess
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteRule (.*)$ public/$1 [L]
 </IfModule>
 EOT
+#Modify .htaccess file in public/
 echo "[ OK ] .htaccess in root done"
 cat <<EOT > public/.htaccess
 RewriteCond {REQUEST_FILENAME} -f
@@ -38,6 +44,9 @@ RewriteRule ^subdom/[^/]+/public/(.+[^/])$ /$1/ [R]
 EOT
 echo "[ OK ] Patching done"
 echo "[INFO] Patching config php files to remove putenv() function by python envPatcher"
+#Run env patcher
 ./envPatcher.py
+
+#Remove env patcher from procject directory
 rm envPatcher.py
 echo "[ OK ] envPatching done"
