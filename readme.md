@@ -14,3 +14,6 @@ e.g. `patcher C:\Users\User\Documents\myProject`
 ### On Linux:
 In terminal go to this repository by `cd` and run `./patcher.sh PATH_TO_ROOT_OF_YOUR_PROJECT`
 e.g. `./patcher.sh ~/myProject`
+
+## Post install/patch
+Copy all files to www or root of your subdomain by ftp and set access rights 0777 to storage and bootstrap/cache recursively
