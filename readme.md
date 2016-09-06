@@ -1,7 +1,7 @@
 # Larawed
 Copyright (C) 2016 Josef Kuchař
 
-Larawed modify existing/new laravel project to run on wedos.cz hosting
+Larawed is tool that modify existing/new laravel project to run on wedos.cz hosting and maybe on other shared hostings
 ## U need this in your path:
 1. composer
 2. python (version 3 as default)
