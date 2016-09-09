@@ -1,22 +1,23 @@
 # Larawed
 Copyright (C) 2016 Josef Kuchař
 
-Larawed modify existing/new laravel project to run on wedos.cz hosting
+Larawed is tool that modify existing/new laravel project to run on shared hostings
 ## U need this in your path:
 1. composer
-2. python (version 3 as default)
+2. python 3 as python3
 
 ## How to use
 ### On MS Windows:
-In cmd go to this repository by `cd` and run `patcher PATH_TO_ROOT_OF_YOUR_PROJECT`
-e.g. `patcher C:\Users\User\Documents\myProject`
+In cmd go to this repository by `cd` and run `python3 larawed.py [--hosting] PATH`
+e.g. `python3 larawed.py --hosting wedos C:/Users/Example/Documents/LaravelProject`
 
 ### On Linux:
-In terminal go to this repository by `cd` and run `./patcher.sh PATH_TO_ROOT_OF_YOUR_PROJECT`
-e.g. `./patcher.sh ~/myProject`
+In terminal go to this repository by `cd` and run `./larawed.py [--hosting] PATH`
+e.g. `./larawed.py --hosting wedos ~/LaravelProject`
 
 ### On macOS:
-Not yet
+In terminal go to this repository by `cd` and run `python3 laraved.py [--hosting] PATH`
+e.g. `python3 laraved.py --hosting wedos ../LaravelProject`
 
 ## Post install/patch
 Copy all files to www or root of your subdomain by ftp and set access rights 0777 to storage and bootstrap/cache recursively
