@@ -2,7 +2,6 @@
 # "Hashtag" is comment
 # Exclamation mark is file to patch, if you want to have ! on line start use \
 !.htaccess
-\!test
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteRule (.*)$ public/$1 [L]
