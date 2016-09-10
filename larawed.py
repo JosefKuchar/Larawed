@@ -7,6 +7,7 @@ import os
 import glob
 import argparse
 import subprocess
+import sys
 
 # Define constants
 PATH = ""
@@ -44,6 +45,12 @@ def patchFiles(filename):
         else:
             currentFile.write(line)
 
+#Print logo
+print(" __                            _ ")
+print("|  |   ___ ___ ___ _ _ _ ___ _| |")
+print("|  |__| .'|  _| .'| | | | -_| . |")
+print("|_____|__,|_| |__,|_____|___|___|")
+print("")
 
 # Load patchs
 patchs = []
@@ -51,14 +58,12 @@ for patch in glob.glob("patchs/*.patch"):
     patchs.append(os.path.basename(patch)[:-6])
 
 # Setup argument parser
-argparser = argparse.ArgumentParser(description="Laravel patching tool for shared hostings", epilog="available hostings: " + ", ".join(patchs))
+argparser = argparse.ArgumentParser(description="- Laravel patching tool for shared hostings", epilog="available hostings: " + ", ".join(patchs))
 
 # Add arguments
 argparser.add_argument("path", type=str, nargs=1, help="Path to laravel project")
 argparser.add_argument("--hosting", action="store", default="general", help="Select patch for the hosting")
-
 args = argparser.parse_args()
-
 # Check if path exists
 if os.path.exists(os.path.abspath(args.path[0])):
     PATH = os.path.abspath(args.path[0])
@@ -75,13 +80,17 @@ if hostingExists:
 else:
     argparser.error("This hosting does not exists")
 
+print("[ 0% ] Installing random_compat")
 # Install random_compat
 subprocess.call(["composer", "--no-ansi", "require", "paragonie/random_compat:~1.4"], shell=True, cwd=PATH)
 
+print("[20% ] Patching with general patch")
 # NORMAL FILES PATCHING
 patchFiles("general")
+print("[40% ] Patching with " + HOSTING + " patch")
 patchFiles(HOSTING)
 
+print("[60% ] Patching env file")
 # CONFIG FILES PATCHING
 # Create fake head
 config = io.StringIO();
@@ -95,6 +104,7 @@ config.seek(0, os.SEEK_SET)
 confparser = configparser.ConfigParser()
 confparser.readfp(config)
 
+print("[80% ] Patching configs")
 # Get all config files
 configs = glob.glob(PATH + "/config/*.php")
 
@@ -138,3 +148,4 @@ for configName in configs:
 
         #W rite changes into .php config file
         configFile.write(line)
+print("[100%] Patching done")
