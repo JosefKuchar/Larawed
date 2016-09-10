@@ -1,6 +1,3 @@
-# Larawed general patch
-# "Hashtag" is comment
-# Exclamation mark is file to patch, if you want to have ! on line start use \
 !.htaccess
 <IfModule mod_rewrite.c>
 RewriteEngine On
