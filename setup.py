@@ -23,6 +23,7 @@ setup(
         "License :: GNUv3 License"
     ],
     install_requires = [
-        "colorama"
+        "colorama",
+        "configparser"
     ]
 )
