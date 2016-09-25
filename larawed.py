@@ -54,6 +54,7 @@ print(colorama.Fore.YELLOW + " __                            _ ")
 print(colorama.Fore.YELLOW + "|  |   ___ ___ ___ _ _ _ ___ _| |")
 print(colorama.Fore.YELLOW + "|  |__| .'|  _| .'| | | | -_| . |")
 print(colorama.Fore.YELLOW + "|_____|__,|_| |__,|_____|___|___|")
+print(colorama.Fore.WHITE  + "github.com/JosefKuchar/Larawed" + colorama.Fore.YELLOW + " v1")
 
 # Reset colors back
 print(colorama.Style.RESET_ALL)
@@ -89,24 +90,24 @@ else:
     argparser.error("This hosting does not exists")
 
 if args.info:
-    print("[ 0% ] Installing random_compat")
+    print("[ " + colorama.Fore.BLUE + "0%" + colorama.Fore.WHITE + " ] Installing random_compat")
 
 # Install random_compat
 subprocess.call(["composer", "--no-ansi", "require", "paragonie/random_compat:~1.4"], shell=True, cwd=PATH)
 
 if args.info:
-    print("[20% ] Patching with general patch")
+    print("[" + colorama.Fore.BLUE + "20%" + colorama.Fore.WHITE + " ] Patching with general patch")
 
 # NORMAL FILES PATCHING
 patchFiles("general")
 
 if args.info:
-    print("[40% ] Patching with " + HOSTING + " patch")
+    print("[" + colorama.Fore.BLUE + "40%" + colorama.Fore.WHITE + " ] Patching with " + HOSTING + " patch")
 
 patchFiles(HOSTING)
 
 if args.info:
-    print("[60% ] Patching env file")
+    print("[" + colorama.Fore.BLUE + "60%" + colorama.Fore.WHITE + " ] Patching env file")
 
 # CONFIG FILES PATCHING
 # Create fake head
@@ -122,7 +123,7 @@ confparser = configparser.ConfigParser()
 confparser.readfp(config)
 
 if args.info:
-    print("[80% ] Patching configs")
+    print("[" + colorama.Fore.BLUE + "80%" + colorama.Fore.WHITE + " ] Patching configs")
 
 # Get all config files
 configs = glob.glob(PATH + "/config/*.php")
@@ -168,4 +169,4 @@ for configName in configs:
         # Write changes into .php config file
         configFile.write(line)
 if args.info:
-    print("[100%] Patching done")
+    print("[" + colorama.Fore.BLUE + "100%" + colorama.Fore.WHITE + "] Patching done")
