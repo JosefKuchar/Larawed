@@ -12,7 +12,7 @@ setup(
     author = "Josef Kuchař",
     author_email = "email@josefkuchar.cz",
     description = "Larawed is tool that modify existing/new laravel project to run on shared hostings",
-    license = "GNUv3",
+    license = "GPLv3",
     keywords = "patcher tool laravel larawed php python",
     url = "https://github.com/JosefKuchar/Larawed",
     long_description = read("readme.md"),
