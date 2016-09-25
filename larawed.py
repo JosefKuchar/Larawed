@@ -164,7 +164,7 @@ for configName in configs:
                 # Because python
                 key = key
 
-        #W rite changes into .php config file
+        # Write changes into .php config file
         configFile.write(line)
 if args.info:
     print("[100%] Patching done")
