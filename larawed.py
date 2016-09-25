@@ -7,6 +7,7 @@ import os
 import glob
 import argparse
 import subprocess
+import colorama
 
 # Define constants
 PATH = ""
@@ -44,12 +45,17 @@ def patchFiles(filename):
         else:
             currentFile.write(line)
 
-#Print logo
-print(" __                            _ ")
-print("|  |   ___ ___ ___ _ _ _ ___ _| |")
-print("|  |__| .'|  _| .'| | | | -_| . |")
-print("|_____|__,|_| |__,|_____|___|___|")
-print("")
+# Init colors
+colorama.init()
+
+# Print logo
+print(colorama.Fore.YELLOW + " __                            _ ")
+print(colorama.Fore.YELLOW + "|  |   ___ ___ ___ _ _ _ ___ _| |")
+print(colorama.Fore.YELLOW + "|  |__| .'|  _| .'| | | | -_| . |")
+print(colorama.Fore.YELLOW + "|_____|__,|_| |__,|_____|___|___|")
+
+# Reset colors back
+print(colorama.Style.RESET_ALL)
 
 # Load patchs
 patchs = []
