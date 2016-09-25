@@ -13,7 +13,7 @@ First of all you need to run `setup.py install`
 `setup.py install` or `python setup.py install` or `python3 setup.py install` in larawed directory
 
 ###### Linux and MacOS
-`./setup.py install`
+`sudo python setup.py install`
 
 ### On MS Windows:
 In cmd go to this repository by `cd` and run `larawed.py [--hosting] PATH`
@@ -21,7 +21,7 @@ e.g. `larawed.py --hosting wedos C:/Users/Example/Documents/LaravelProject`
 
 ### On Linux:
 In terminal go to this repository by `cd` and run `./larawed.py [--hosting] PATH`
-e.g. `./larawed.py --hosting wedos ~/LaravelProject`
+e.g. `sudo python larawed.py --hosting wedos ~/LaravelProject`
 
 ### On MacOS:
 In terminal go to this repository by `cd` and run `python3 laraved.py [--hosting] PATH`
