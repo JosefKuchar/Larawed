@@ -9,6 +9,8 @@ import glob
 import argparse
 import subprocess
 import colorama
+import shutil
+import math
 
 # Define constants
 PATH = ""
@@ -93,10 +95,15 @@ if args.info:
     print("[ " + colorama.Fore.BLUE + "0%" + colorama.Fore.WHITE + " ] Installing random_compat")
 
 # Install random_compat
+if args.info:
+    terminalSize = (shutil.get_terminal_size((80, 20))[0] - 11) / 2
+    print(colorama.Fore.YELLOW + math.floor(terminalSize) * "x" + colorama.Fore.WHITE + " COMPOSER " + colorama.Fore.YELLOW + math.ceil(terminalSize) * "x" + colorama.Style.RESET_ALL)
 subprocess.call(["composer", "--no-ansi", "require", "paragonie/random_compat:~1.4"], shell=True, cwd=PATH)
 
 if args.info:
-    print("[" + colorama.Fore.BLUE + "20%" + colorama.Fore.WHITE + " ] Patching with general patch")
+    terminalSize = shutil.get_terminal_size((80, 20))[0] - 1
+    print(colorama.Fore.YELLOW + math.floor(terminalSize) * "x" + colorama.Style.RESET_ALL)
+    print("[" + colorama.Fore.BLUE + "20%" + colorama.Fore.WHITE + " ] Patching with " + HOSTING + " patch")
 
 # NORMAL FILES PATCHING
 patchFiles("general")
